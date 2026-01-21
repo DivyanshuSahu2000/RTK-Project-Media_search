@@ -30,14 +30,20 @@ const ResultGrid = () => {
         if (activeTab == "photos") {
           let res = await fetchPhotos(query);
           data = res.map((item) => ({
+            // id: item.id,
+            // type: "photo",
+            // title: item.alt_description,
+            // thumbnail: item.urls.small,
+            // src: item.urls.full,
+            // url: item.links.html,
             id: item.id,
             type: "photo",
-            title: item.alt_description,
-            thumbnail: item.urls.small,
-            src: item.urls.full,
-            url: item.links.html,
+            title: item.photographer,
+            // thumbnail: item.urls.small,
+            src: item.src.original,
+            url: item.url,
           }));
-          console.log(data);
+          console.log(res);
         }
         if (activeTab == "videos") {
           let res = await fetchVideos(query);
