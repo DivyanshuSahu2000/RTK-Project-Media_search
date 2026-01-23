@@ -3,17 +3,19 @@ import SearchBar from "./components/SearchBar";
 import Tabs from "./components/Tabs";
 import ResultGrid from "./components/ResultGrid";
 import { fetchGif } from "./api/mediaApi";
+import CollectionPage from "./pages/collectionPage";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import Navbar from "./components/Navbar";
 
 const App = () => {
-  const getGifs = async () => {
-    const data = await fetchGif("cat");
-    console.log(data);
-  };
   return (
     <div className="min-h-screen w-full bg-gray-900 text-white">
-      <SearchBar />
-      <Tabs />
-      <ResultGrid />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/collection" element={<CollectionPage></CollectionPage>} />
+      </Routes>
     </div>
   );
 };

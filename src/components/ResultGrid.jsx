@@ -15,9 +15,9 @@ const ResultGrid = () => {
   const { query, activeTab, results, error, loading } = useSelector(
     (store) => store.search
   );
-  const dispatch = useDispatch();
   //   const activeTab = useSelector((state) => state.search.activeTab);
   //   const query = useSelector((state) => state.search.query);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log("EFFECT RUN:", { query, activeTab });
@@ -30,16 +30,10 @@ const ResultGrid = () => {
         if (activeTab == "photos") {
           let res = await fetchPhotos(query);
           data = res.map((item) => ({
-            // id: item.id,
-            // type: "photo",
-            // title: item.alt_description,
-            // thumbnail: item.urls.small,
-            // src: item.urls.full,
-            // url: item.links.html,
             id: item.id,
             type: "photo",
             title: item.photographer,
-            // thumbnail: item.urls.small,
+            thumbnail: item.src.tiny,
             src: item.src.original,
             url: item.url,
           }));
@@ -80,7 +74,7 @@ const ResultGrid = () => {
   if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div className="flex justify-between w-full flex-wrap gap-6 overflow-auto px-10">
+    <div className="flex sm:justify-between justify-around w-full flex-wrap gap-5 overflow-auto sm:px-10 px-4">
       {results.map((item, idx) => {
         return (
           <div key={idx}>

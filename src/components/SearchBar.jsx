@@ -15,19 +15,19 @@ const SearchBar = () => {
         onSubmit={(e) => {
           submitHandler(e);
         }}
-        className=" flex gap-4 p-10 bg-gray-800"
+        className=" flex gap-4 p-6 bg-(--c1) "
       >
         <input
           required
           type="text"
-          className="border-2 outline-none px-4 py-2 text-xl rounded"
+          className="border-2 outline-none px-5 py-1 text-lg rounded w-full min-w[70vw]"
           placeholder="Search anything..."
           value={text}
           onChange={(e) => {
             setText(e.target.value);
           }}
         />
-        <button className="border-2 outline-none px-4 py-2 text-xl rounded cursor-pointer active:scale-95">
+        <button className="border-2 outline-none px-3 py-1 text-lg rounded cursor-pointer active:scale-95">
           Search
         </button>
       </form>
